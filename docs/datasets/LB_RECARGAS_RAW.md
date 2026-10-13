@@ -94,6 +94,17 @@ Observaciones iniciales:
 
 Estos resultados son evidencia de calidad del snapshot recibido, no una aprobación del modelo. La regla de grano y la decisión de deduplicacion siguen abiertas.
 
+## Categorias observadas
+
+| Campo | Valores observados | Total de filas reconciliado |
+| --- | --- | ---: |
+| `ACCOUNTS_RAW.Genero` | `Hombre` 450,272; `Mujer` 425,739 | 876,011 |
+| `ACCOUNTS_RAW.Nivel_Wigos` | `Classic` 841,560; `Platinum` 14,234; `Gold` 13,405; `Diamond` 4,069; `Black` 2,283; `The One` 460 | 876,011 |
+| `MOVIBANK_RAW.Tipo` | `Efectivo` 7,233,063; `Tarjeta` 4,601,579; `Canceladas` 1,684,812 | 13,519,454 |
+| `NIVEL_MENSUAL_RAW.Nivel_Mensual` | `Gold` 132,327; `Platinum` 128,466; `Diamond` 36,433; `Black` 19,584; `The One` 3,673 | 320,483 |
+
+Los valores observados cubren el total de filas de cada campo revisado. La consulta no mostró una fila vacia o nula para estos cuatro campos; falta validar si el catalogo completo puede cambiar fuera del snapshot.
+
 ## Dependencias y uso
 
 El nombre del dataset lo ubica en el dominio de recargas de LANDBASE. La captura por si sola no demuestra las dependencias upstream/downstream, el proceso de carga, la periodicidad ni el uso en el modelo `4. Recargas`.
