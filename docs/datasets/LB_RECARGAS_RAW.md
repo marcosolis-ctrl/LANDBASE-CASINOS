@@ -80,6 +80,20 @@ Observaciones iniciales:
 - Valores distintos de `Tipo`, `Genero`, `Nivel_Wigos`, `Nivel_Mensual` y estados.
 - Cruces de cobertura entre clientes, recargas, banco movil, niveles y tarjeta fisica.
 
+## Resultados QA recibidos
+
+| Control | Resultado observado | Interpretacion provisional |
+| --- | --- | --- |
+| Nulos en llaves candidatas | No hubo nulos en las columnas revisadas, excepto `MOVIBANK_RAW.mbm_request_id` y `MOVIBANK_RAW.mbm_operation_id`: 1,694,882 de 13,519,454 filas, 12.5366% | La nulidad puede ser valida para solicitudes sin operacion final, pero requiere regla de negocio |
+| Cobertura de `Num_Cliente` contra `ACCOUNTS_RAW` | `ARTURITO_RAW`, `NIVEL_MENSUAL_RAW` y `TARJETA_FISICA_RAW`: 0 clientes no encontrados. `MOVIBANK_RAW`: 2 clientes no encontrados de 172,774 distintos | Cobertura alta; investigar los 2 casos antes de declarar integridad total |
+| Consistencia de periodo | 0 inconsistencias entre `Year`/`Month` y `Gameday`/`GameDay` en las 5 tablas revisadas | Resultado favorable para esta regla, sujeto a que la conversion UTC sea la esperada |
+| `Recarga` en ARTURITO y tarjeta fisica | Sin nulos, ceros ni negativos. Minimo 50 y maximo 10,000 | Valores dentro de rango observado; falta validar limites de negocio |
+| `mbm_sub_amount` en Movibank | 1,694,882 nulos; sin ceros ni negativos entre los valores informados. Minimo 50 y maximo 10,000 | Nulidad alineada en conteo con los identificadores Movibank; requiere entender estados |
+| Duplicados de `ARTURITO_RAW.Operacion_id` | 105 claves repetidas; todas con 2 filas en el resultado recibido | `Operacion_id` no es llave unica en este snapshot |
+| Duplicados de `TARJETA_FISICA_RAW.Operacion_id` | El resultado estaba limitado a 1,000 claves repetidas: 955 con 2 filas y 45 con 3 filas | Hay al menos 1,000 claves repetidas; se requiere una consulta sin `LIMIT` para cuantificar todo el universo |
+
+Estos resultados son evidencia de calidad del snapshot recibido, no una aprobación del modelo. La regla de grano y la decisión de deduplicacion siguen abiertas.
+
 ## Dependencias y uso
 
 El nombre del dataset lo ubica en el dominio de recargas de LANDBASE. La captura por si sola no demuestra las dependencias upstream/downstream, el proceso de carga, la periodicidad ni el uso en el modelo `4. Recargas`.

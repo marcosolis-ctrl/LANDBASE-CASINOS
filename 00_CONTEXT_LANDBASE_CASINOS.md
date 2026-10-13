@@ -9,6 +9,7 @@ description: "Contexto inicial del mapeo de fuentes, dependencias y modelos BI d
 - **Estado de evidencia:** **Directional**. Se verificó visualmente el linaje y los nombres mostrados en los diagramas el 2026-10-13. El mapeo no permite confirmar por sí solo schema, grano físico, llaves, filtros, periodicidad, cifras ni reglas de negocio.
 - **Regla de uso:** Este documento conserva contexto de arquitectura y dependencias. No debe tratarse como validación de ejecución ni como diccionario físico hasta revisar schemas, SQL/procesos y muestras.
 - **Primer dataset documentado:** `business-intelligence-470119.LB_RECARGAS_RAW`. El inventario recibido contiene 6 tablas, 19,701,892 filas y 2,784.02 MB visibles en metadata. El detalle está en `docs/datasets/LB_RECARGAS_RAW.md`.
+- **QA inicial:** `Year`/`Month` fueron consistentes con las fechas revisadas; `Num_Cliente` tuvo cobertura casi completa contra `ACCOUNTS_RAW`; se observaron duplicados de `Operacion_id` y nulidad de 12.5366% en dos identificadores de `MOVIBANK_RAW`. No se ha definido todavía el grano oficial.
 
 ## Entities
 
