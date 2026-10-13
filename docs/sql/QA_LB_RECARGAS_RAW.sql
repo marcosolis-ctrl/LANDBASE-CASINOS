@@ -29,8 +29,8 @@ SELECT 'MOVIBANK_RAW', 'mbm_operation_id', COUNT(*), COUNTIF(mbm_operation_id IS
        SAFE_DIVIDE(COUNTIF(mbm_operation_id IS NULL), COUNT(*))
 FROM `business-intelligence-470119.LB_RECARGAS_RAW.MOVIBANK_RAW`
 UNION ALL
-SELECT 'MOVIBANK_RAW', 'mbr_request_id', COUNT(*), COUNTIF(mbr_request_id IS NULL),
-       SAFE_DIVIDE(COUNTIF(mbr_request_id IS NULL), COUNT(*))
+SELECT 'MOVIBANK_RAW', 'mbm_request_id', COUNT(*), COUNTIF(mbm_request_id IS NULL),
+       SAFE_DIVIDE(COUNTIF(mbm_request_id IS NULL), COUNT(*))
 FROM `business-intelligence-470119.LB_RECARGAS_RAW.MOVIBANK_RAW`
 UNION ALL
 SELECT 'NIVEL_MENSUAL_RAW', 'Num_Cliente', COUNT(*), COUNTIF(Num_Cliente IS NULL),
