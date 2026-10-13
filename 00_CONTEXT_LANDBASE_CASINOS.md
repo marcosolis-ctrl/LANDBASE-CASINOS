@@ -8,6 +8,7 @@ description: "Contexto inicial del mapeo de fuentes, dependencias y modelos BI d
 - **Cobertura y autoridad:** Primer inventario visual del archivo suministrado `C:\Users\marco.solis\Downloads\Mapeo_BI_Exportable.html`. El archivo contiene 7 modelos y 4 diagramas generales con dependencias entre conexiones TI, sistemas/fuentes, tablas transaccionales y catálogos, reportes TI, agrupaciones BI y modelos BI.
 - **Estado de evidencia:** **Directional**. Se verificó visualmente el linaje y los nombres mostrados en los diagramas el 2026-10-13. El mapeo no permite confirmar por sí solo schema, grano físico, llaves, filtros, periodicidad, cifras ni reglas de negocio.
 - **Regla de uso:** Este documento conserva contexto de arquitectura y dependencias. No debe tratarse como validación de ejecución ni como diccionario físico hasta revisar schemas, SQL/procesos y muestras.
+- **Primer dataset documentado:** `business-intelligence-470119.LB_RECARGAS_RAW`. El inventario recibido contiene 6 tablas, 19,701,892 filas y 2,784.02 MB visibles en metadata. El detalle está en `docs/datasets/LB_RECARGAS_RAW.md`.
 
 ## Entities
 
