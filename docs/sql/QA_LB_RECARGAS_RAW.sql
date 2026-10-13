@@ -146,15 +146,15 @@ SELECT 'ACCOUNTS_RAW.Genero' AS field_name, Genero AS value, COUNT(*) AS rows_co
 FROM `business-intelligence-470119.LB_RECARGAS_RAW.ACCOUNTS_RAW`
 GROUP BY value
 UNION ALL
-SELECT 'ACCOUNTS_RAW.Nivel_Wigos', Nivel_Wigos, COUNT(*)
+SELECT 'ACCOUNTS_RAW.Nivel_Wigos' AS field_name, Nivel_Wigos AS value, COUNT(*) AS rows_count
 FROM `business-intelligence-470119.LB_RECARGAS_RAW.ACCOUNTS_RAW`
 GROUP BY value
 UNION ALL
-SELECT 'MOVIBANK_RAW.Tipo', Tipo, COUNT(*)
+SELECT 'MOVIBANK_RAW.Tipo' AS field_name, Tipo AS value, COUNT(*) AS rows_count
 FROM `business-intelligence-470119.LB_RECARGAS_RAW.MOVIBANK_RAW`
 GROUP BY value
 UNION ALL
-SELECT 'NIVEL_MENSUAL_RAW.Nivel_Mensual', Nivel_Mensual, COUNT(*)
+SELECT 'NIVEL_MENSUAL_RAW.Nivel_Mensual' AS field_name, Nivel_Mensual AS value, COUNT(*) AS rows_count
 FROM `business-intelligence-470119.LB_RECARGAS_RAW.NIVEL_MENSUAL_RAW`
 GROUP BY value
 ORDER BY field_name, rows_count DESC;
