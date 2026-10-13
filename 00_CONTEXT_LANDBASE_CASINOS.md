@@ -17,6 +17,7 @@ description: "Contexto inicial del mapeo de fuentes, dependencias y modelos BI d
 | Sesiones de juego | Reporte TI de actividad de juego; alimenta clientes de máquinas e indicadores | No verificable | Play Sessions, Accounts, Terminals y catálogos relacionados |
 | Sesiones juego mesas | Reporte TI de actividad de mesas; alimenta clientes de mesas | No verificable | Accounts, GT Play Sessions, Gaming Tables Types, GuiUsers, Gt Seats y Gaming Tables |
 | Recargas | Agrupación BI de recargas | No verificable | Recargas app, Movimientos caja, Banco móvil y fuentes de cuentas |
+| Dataset `LB_RECARGAS_RAW` | Dataset RAW de BigQuery para el dominio de recargas | No verificable | `business-intelligence-470119.LB_RECARGAS_RAW`; snapshot con 6 tablas visibles |
 | Clientes Máquinas | Agrupación BI de clientes asociados a máquinas | No verificable | Sesiones de juego |
 | Clientes Mesas | Agrupación BI de clientes asociados a mesas | No verificable | Sesiones juego mesas y Movimientos de cuenta mesas |
 | Indicadores LB | Agrupación BI intermedia para indicadores de LANDBASE | No verificable | Clientes Máquinas, Clientes Mesas, Recargas y otros flujos del diagrama |
@@ -55,6 +56,7 @@ description: "Contexto inicial del mapeo de fuentes, dependencias y modelos BI d
 | Sistema / conexión | Alestra, Drive | Flujos operativos y archivos | Diagramas generales y modelos 1–7 |
 | Plataforma o sistema origen | Wigos, Simphony, LOS, SAP, Salesforce, Calimaco, Optimove, Optimove-Calimaco, Ingenious, Workday, Kronos | Según el modelo | Diagramas suministrados |
 | Dominio operativo | Máquinas, mesas, recargas, alimentos y bebidas, comercial, capital humano, finanzas, cadena de suministro, promociones/CRM, Online | Según modelo | Diagramas suministrados |
+| Dataset de recargas RAW | `LB_RECARGAS_RAW` | Inventario de recargas | Captura de BigQuery suministrada |
 
 ## Pitfalls
 
@@ -67,6 +69,7 @@ description: "Contexto inicial del mapeo de fuentes, dependencias y modelos BI d
 | Dependencia de Excel/Drive | Identificar archivo, pestaña, propietario, frecuencia, histórico y controles de versión | Modelos 1–7 y diagramas generales |
 | El modelo Online mezcla plataformas | Mantener separadas las definiciones de Calimaco, Optimove, Optimove-Calimaco e Ingenious hasta validar las 34 tablas referidas | Diagrama 3 |
 | El mapa no muestra cifras ni cobertura temporal | Validar frescura, fecha inicial/final, faltantes y reconciliación con las fuentes | Limitación del HTML |
+| El catálogo RAW no demuestra calidad ni modelo físico | Validar schema, grano, llaves, particiones, duplicados y downstream antes de usarlo | Captura de `LB_RECARGAS_RAW` |
 
 ## Open Questions
 
@@ -79,6 +82,7 @@ description: "Contexto inicial del mapeo de fuentes, dependencias y modelos BI d
 | ¿Qué procesos generan cada reporte y con qué frecuencia? | Permite documentar frescura y operación | Jobs, procedimientos, orquestador o bitácoras |
 | ¿Qué fuente gobierna cuando Wigos, Excel, Simphony, Salesforce o SAP se contradicen? | Define autoridad y reconciliación | Regla de negocio aprobada por dominio |
 | ¿Dónde están físicamente las 26 tablas Calimaco, ClientBase, las 5 tablas Optimove-Calimaco y las 3 tablas Ingenious? | Permite completar el modelo Online | Accesos, schemas y catálogo de objetos |
+| ¿Cuál es el schema, grano y llave de las 6 tablas de `LB_RECARGAS_RAW`? | Define joins y evita doble conteo en Recargas | Schema de BigQuery y muestra mínima |
 
 ## Sources
 
@@ -87,4 +91,5 @@ description: "Contexto inicial del mapeo de fuentes, dependencias y modelos BI d
 | [Mapeo_BI_Exportable.html](C:\Users\marco.solis\Downloads\Mapeo_BI_Exportable.html) | Fuente suministrada para el inventario visual de dependencias y modelos | Revisada visualmente el 2026-10-13; contiene diagramas PNG incrustados, no schemas ni SQL |
 | `Modelo1_Flash.png` a `Modelo7_Tablero_Comercial.png` | Modelos detallados de Flash, Clientes, Carteras, Recargas, Mesas, A y B y Tablero Comercial | Extraídos del HTML para inspección visual; no prueban ejecución |
 | `Diagrama1.png` a `Diagrama4.png` | Dependencias generales y extensiones hacia mantenimiento, capital humano, finanzas, cadena de suministro, Calimaco y Salesforce | Extraídos del HTML para inspección visual; nombres y flechas requieren validación técnica |
+| [LB_RECARGAS_RAW.md](docs/datasets/LB_RECARGAS_RAW.md) | Inventario inicial y pendientes del dataset `business-intelligence-470119.LB_RECARGAS_RAW` | Elaborado a partir de la captura suministrada; no contiene schema ni QA ejecutado |
 
